@@ -10,9 +10,9 @@
     <title>DAMEME</title>
 </head>
 
-<body onload="init()">
+<body onload="init()" class="flex-col space-between">
     <!-- HEADER -->
-    <header class="main-header">
+    <header class="main-header ">
         <div class="container">
             <div class="main-header-content flex space-between align-center">
 
@@ -29,7 +29,7 @@
         </div>
     </header>
     <!-- MAIN -->
-    <main class="main  ">
+    <main class="main flex ">
         <!-- EDITOR PAGE -->
         <div class="editor-page container">
             <!-- CANVAS CONTAINER -->
@@ -61,14 +61,15 @@
     </main>
 
     <!-- FOOTER -->
-    <footer class="footer ">
+    <footer class="footer flex-col flex">
         <h2 class="logo logo-footer">Dameme</h2>
         <p>All rights reserved</p>
 
     </footer>
 
 
-    <script src="js/controller.js"></script>
+    <script src="js/editor-service.js"></script>
+    <script src="js/editor-controller.js"></script>
 </body>
 
 </html>

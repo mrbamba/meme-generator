@@ -2,11 +2,15 @@
     box-sizing: border-box;
 }
 
+/* FONTS */
+@font-face{
+    font-family: impact;
+    src: url('fonts/impact/impact.ttf');
+}
+
 /* BASE */
 
-/* html {
 
-} */
 
 body {
     margin: 0 auto;
@@ -82,11 +86,15 @@ a {
 }
 
 /* MAIN */
+.main{
+    background-color: rgb(245, 245, 245);
+    flex-grow: 1;
+}
 
 .main-editor-page-grid-container {
     display: grid;
     grid-template-columns: 2fr 1fr;
-    margin: 2em;
+    padding: 2em;
 }
 
 .editor-tools-grid{
@@ -142,6 +150,15 @@ a {
     padding-top: 15PX;
 }
 
+/* -------------GALLERY------------ */
+.gallery-page{
+    display: none;
+    visibility: hidden;
+}
+
+
+
+/* HELPERS */
 /* flex */
 
 .flex {
