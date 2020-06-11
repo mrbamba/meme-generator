@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style/style.css">
-    <script src="https://kit.fontawesome.com/c63920a58d.js" crossorigin="anonymous"></script>
+    <!-- <script src="https://kit.fontawesome.com/c63920a58d.js" crossorigin="anonymous"></script> -->
 
-    <title>DAMEME</title>
+    <title>MEMED</title>
 </head>
 
 <body onload="init()" class="flex-col space-between">
@@ -17,7 +17,7 @@
             <div class="main-header-content flex space-between align-center">
 
                 <!-- LOGO -->
-                <div class="logo-header logo flex "><a href="/">Dameme</a></div>
+                <div class="logo-header logo flex "><a href="/">MEMED</a></div>
                 <!-- MENU -->
                 <button id="btn-menu" class="btn-menu" onclick="toggleMenu()">☰</button>
 
@@ -34,24 +34,30 @@
         <div class="editor-page hidden container" >
             <!-- CANVAS -->
             <div class="main-editor-page-grid-container">
-                <div class="canvas-container flex justify-content">
-                    <canvas onclick="draw(event)" id="drawing"
-                        style=" width:500px; height:500px;border: 1px solid black;"></canvas>
+                <div class="canvas-container flex ">
+                    <canvas  id="drawing"
+                        style=" width:502px; height:502px;border: 1px solid black;"></canvas>
                 </div>
                 <!-- EDITOR TOOLS  -->
-                <div class="editor-tools-grid">
-                    <div class="editor-tools">
+                <!-- <div class="editor-tools-grid"> -->
+                    <div class="editor-tools-grid">
                         <input type="text" placeholder="Enter Text" class="text-line" onkeydown="onTextChange()" onpaste="onTextChange()" oninput="onTextChange()">
 
+                        <div class="switch-line" onclick="onSwitchLine()"></div>
+
+                        <div class="add-line" onclick="onAddLine()"></div>
 
 
 
                         <input type="color" id="favcolor" name="favcolor" value="#000" class="stroke-color-picker"
                             onchange="onStrokeColorChange()">
+                            <div class="stroke-color-picker-img"></div>
+
                         <input type="color" id="favcolor" name="favcolor" value="#000" class="fill-color-picker"
                             onchange="onFillColorChange();">
+                            <div class="fill-color-picker-img"></div>
                     </div>
-                </div>
+                <!-- </div> -->
             </div>
         </div>
         <!-- GALLERY PAGE -->
@@ -64,7 +70,7 @@
     </main>
     <!-- FOOTER -->
     <footer class="footer flex-col flex">
-        <h2 class="logo logo-footer">Dameme</h2>
+        <h2 class="logo logo-footer">MEMED</h2>
         <p>All rights reserved</p>
     </footer>
 

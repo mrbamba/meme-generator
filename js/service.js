@@ -1,60 +1,123 @@
 'use strict'
+// GLOBAL VARIABLES
+var gKeywords = { 'happy': 12, 'success': 5 };
 
-var gKeywords={'happy':12,'success':5};
-
-var gImgs=[
-    {id:1,url:'meme-imgs/1.jpg', keywords:['trump','upset','fuck off']},
-    {id:2,url:'meme-imgs/2.jpg', keywords:['pupies', 'love']},
-    {id:3,url:'meme-imgs/3.jpg', keywords:['']},
-    {id:4,url:'meme-imgs/4.jpg', keywords:['']},
-    {id:5,url:'meme-imgs/5.jpg', keywords:['']},
-    {id:6,url:'meme-imgs/6.jpg', keywords:['']},
-    {id:7,url:'meme-imgs/7.jpg', keywords:['']},
-    {id:8,url:'meme-imgs/8.jpg', keywords:['']},
-    {id:9,url:'meme-imgs/9.jpg', keywords:['']},
-    {id:10,url:'meme-imgs/10.jpg', keywords:['']},
-    {id:11,url:'meme-imgs/11.jpg', keywords:['']},
-    {id:12,url:'meme-imgs/12.jpg', keywords:['']},
-    {id:13,url:'meme-imgs/13.jpg', keywords:['']},
-    {id:14,url:'meme-imgs/14.jpg', keywords:['']},
-    {id:15,url:'meme-imgs/15.jpg', keywords:['']},
-    {id:16,url:'meme-imgs/16.jpg', keywords:['']},
-    {id:17,url:'meme-imgs/17.jpg', keywords:['']},
-    {id:18,url:'meme-imgs/18.jpg', keywords:['']}
+var gImgs = [
+    { id: 1, url: 'meme-imgs/1.jpg', keywords: ['trump', 'upset', 'fuck off'] },
+    { id: 2, url: 'meme-imgs/2.jpg', keywords: ['pupies', 'love'] },
+    { id: 3, url: 'meme-imgs/3.jpg', keywords: [''] },
+    { id: 4, url: 'meme-imgs/4.jpg', keywords: [''] },
+    { id: 5, url: 'meme-imgs/5.jpg', keywords: [''] },
+    { id: 6, url: 'meme-imgs/6.jpg', keywords: [''] },
+    { id: 7, url: 'meme-imgs/7.jpg', keywords: [''] },
+    { id: 8, url: 'meme-imgs/8.jpg', keywords: [''] },
+    { id: 9, url: 'meme-imgs/9.jpg', keywords: [''] },
+    { id: 10, url: 'meme-imgs/10.jpg', keywords: [''] },
+    { id: 11, url: 'meme-imgs/11.jpg', keywords: [''] },
+    { id: 12, url: 'meme-imgs/12.jpg', keywords: [''] },
+    { id: 13, url: 'meme-imgs/13.jpg', keywords: [''] },
+    { id: 14, url: 'meme-imgs/14.jpg', keywords: [''] },
+    { id: 15, url: 'meme-imgs/15.jpg', keywords: [''] },
+    { id: 16, url: 'meme-imgs/16.jpg', keywords: [''] },
+    { id: 17, url: 'meme-imgs/17.jpg', keywords: [''] },
+    { id: 18, url: 'meme-imgs/18.jpg', keywords: [''] }
 ];
-var gMeme={
-    selectedImgId:1,
-    selectedLineIdx:0,
+var gMeme = {
+    selectedImgId: 1,
+    selectedLineIdx: 0,
 
-    lines:[
+    lines: [
         {
-            txt:'',
-            size:20,
-            align:'left',
-            color:'000',
-            stroke:'fff'
+            txt: '',
+            fontSize: '40px',
+            align: 'center',
+            fontFamily: 'impact',
+            strokeColor: 'black',
+            fillColor: '#fff',
+            x: 250,
+            y: 50
         }
     ]
 }
 
-
-function getGMeme(){
+// GETTERS
+function getGMeme() {
     return gMeme;
 }
 
-function getImgById(id){
-    var img=gImgs.find(img => img.id === id);
+function getImgById(id) {
+    var img = gImgs.find(img => img.id === id);
     return img;
 }
-function setLine(text){
-    gMeme.lines[0].txt=text;
+
+function getGSettings() {
+    return gSettings;
+}
+// SETTERS
+
+function setLine() {
+    (gMeme.selectedLineIdx === gMeme.lines.length-1) ? gMeme.selectedLineIdx = 0 : gMeme.selectedLineIdx++;
+    console.log('runs')
+    renderMeme()
+}
+
+function addLine() {
+    if (gMeme.lines.length === 1) {
+        gMeme.lines.push({
+            txt: '',
+            fontSize: '40px',
+            align: 'center',
+            fontFamily: 'impact',
+            strokeColor: 'black',
+            fillColor: '#fff',
+            x: 250,
+            y: 450
+        })
+    } else {
+        gMeme.lines.push({
+            txt: '',
+            fontSize: '40px',
+            align: 'center',
+            fontFamily: 'impact',
+            strokeColor: '#000',
+            fillColor: '#fff',
+            x: 250,
+            y: 250
+        })
+    }
+
+    gMeme.selectedLineIdx = gMeme.lines.length - 1;
+    renderMeme()
+}
+
+
+function setText(text) {
+    gMeme.lines[gMeme.selectedLineIdx].txt = text;
     renderMeme();
 }
 
-function setImg(imgId){
-    gMeme.selectedImgId=imgId;
-    renderMeme();
-
+function setImg(imgId) {
+    gMeme.selectedImgId = imgId;
+    init();
 }
 
+function setFontSize(fontSize) {
+    gMeme.lines[gMeme.selectedLineIdx].fontSize = fontSize;
+}
+
+function setAlign(align) {
+    gMeme.lines[gMeme.selectedLineIdx].align = align
+}
+
+function setFontFamily(fontFamily) {
+    gMeme.lines[gMeme.selectedLineIdx].fontFamily = fontFamily
+}
+
+function setStrokeColor(strokeColor) {
+    gMeme.lines[gMeme.selectedLineIdx].strokeColor = strokeColor
+}
+
+function setFillColor(fillColor) {
+    gMeme.lines[gMeme.selectedLineIdx].fillColor = fillColor;
+}
 
