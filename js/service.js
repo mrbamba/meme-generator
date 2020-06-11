@@ -57,7 +57,6 @@ function getGSettings() {
 
 function setLine() {
     (gMeme.selectedLineIdx === gMeme.lines.length - 1) ? gMeme.selectedLineIdx = 0 : gMeme.selectedLineIdx++;
-    console.log('runs')
     renderMeme()
 }
 
@@ -129,6 +128,15 @@ function setImg(imgId) {
     init();
 }
 
+function moveX(diff){
+    gMeme.lines[gMeme.selectedLineIdx].x += diff;
+    renderMeme();
+}
+
+function moveY(diff){
+    gMeme.lines[gMeme.selectedLineIdx].y += diff;
+    renderMeme();
+}
 
 
 

@@ -49,7 +49,15 @@ function onDeleteLine(){
     DeleteLine();
 }
 
-function onSetFont(diff){
+function onMoveX(diff){
+    moveX(diff);
+}
+
+function onMoveY(diff){
+    moveY(diff);
+}
+
+function onSetFontSize(diff){
     setFontSize(diff);
 }
 
@@ -57,7 +65,10 @@ function onSetAlignment(alignment){
     setAlignment(alignment);
 }
 
-
+function onSetFontFamily(){
+    let fontFamily=document.querySelector('.font-selector').value;
+    setFontFamily(fontFamily);
+}
 
 function onStrokeColorChange() {
     let strokeColor = document.querySelector('.stroke-color-picker').value;
