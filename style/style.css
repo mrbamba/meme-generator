@@ -35,7 +35,7 @@ a {
 } */
 
 .container {
-    max-width: 980px;
+    max-width: 1080px;
     margin: 0 auto;
 }
 
@@ -151,10 +151,26 @@ a {
 }
 
 /* -------------GALLERY------------ */
-.gallery-page{
+/* .editor-page{
     display: none;
     visibility: hidden;
+} */
+
+
+.gallery-grid-container {
+    display: grid;
+    grid-template-columns: repeat(5, 200px);
+    margin: 0 auto;
+    gap: .5em;
+    padding: .5em;
 }
+
+.gallery-img{
+    height: 200px;
+    width:200px;
+    cursor: pointer;
+}
+
 
 
 
@@ -195,4 +211,11 @@ a {
     list-style-type: none;
     margin: 0;
     padding: 0;
+}
+
+/* hidden */
+
+.hidden{
+    display: none;
+    visibility: hidden;
 }

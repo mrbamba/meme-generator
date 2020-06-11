@@ -22,7 +22,7 @@
                 <button id="btn-menu" class="btn-menu" onclick="toggleMenu()">☰</button>
 
                 <ul class="main-nav clean-list flex justify-content">
-                    <li><a href="#">Gallery</a></li>
+                    <li><a href="#" onclick="onOpenGallery()">Gallery</a></li>
                     <li><a href="#">About</a></li>
                 </ul>
             </div>
@@ -31,7 +31,7 @@
     <!-- MAIN -->
     <main class="main flex ">
         <!-- EDITOR PAGE -->
-        <div class="editor-page container">
+        <div class="editor-page hidden container" >
             <!-- CANVAS -->
             <div class="main-editor-page-grid-container">
                 <div class="canvas-container flex justify-content">
@@ -55,22 +55,22 @@
             </div>
         </div>
         <!-- GALLERY PAGE -->
-        <div class="gallery-page">
+        <div class="gallery-page container">
+            <div class="gallery-grid-container">
 
+            </div>
         </div>
 
     </main>
-
     <!-- FOOTER -->
     <footer class="footer flex-col flex">
         <h2 class="logo logo-footer">Dameme</h2>
         <p>All rights reserved</p>
-
     </footer>
 
 
-    <script src="js/editor-service.js"></script>
-    <script src="js/editor-controller.js"></script>
+    <script src="js/service.js"></script>
+    <script src="js/controller.js"></script>
 </body>
 
 </html>

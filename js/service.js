@@ -51,4 +51,10 @@ function setLine(text){
     renderMeme();
 }
 
+function setImg(imgId){
+    gMeme.selectedImgId=imgId;
+    renderMeme();
+
+}
+
 
