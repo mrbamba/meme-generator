@@ -29,7 +29,7 @@ var gMeme = {
     lines: [
         {
             txt: '',
-            fontSize: '40px',
+            fontSize: 40,
             align: 'center',
             fontFamily: 'impact',
             strokeColor: 'black',
@@ -56,7 +56,7 @@ function getGSettings() {
 // SETTERS
 
 function setLine() {
-    (gMeme.selectedLineIdx === gMeme.lines.length-1) ? gMeme.selectedLineIdx = 0 : gMeme.selectedLineIdx++;
+    (gMeme.selectedLineIdx === gMeme.lines.length - 1) ? gMeme.selectedLineIdx = 0 : gMeme.selectedLineIdx++;
     console.log('runs')
     renderMeme()
 }
@@ -65,7 +65,7 @@ function addLine() {
     if (gMeme.lines.length === 1) {
         gMeme.lines.push({
             txt: '',
-            fontSize: '40px',
+            fontSize: 40,
             align: 'center',
             fontFamily: 'impact',
             strokeColor: 'black',
@@ -76,7 +76,7 @@ function addLine() {
     } else {
         gMeme.lines.push({
             txt: '',
-            fontSize: '40px',
+            fontSize: 40,
             align: 'center',
             fontFamily: 'impact',
             strokeColor: '#000',
@@ -87,6 +87,34 @@ function addLine() {
     }
 
     gMeme.selectedLineIdx = gMeme.lines.length - 1;
+    renderMeme()
+}
+
+function DeleteLine() {
+    gMeme.lines.splice(gMeme.selectedLineIdx, 1)
+    gMeme.selectedLineIdx = 0
+    if (gMeme.lines.length === 0) {
+        gMeme.lines.push({
+            txt: '',
+            fontSize: 40,
+            align: 'center',
+            fontFamily: 'impact',
+            strokeColor: '#000',
+            fillColor: '#fff',
+            x: 250,
+            y: 50
+        });
+    }
+    renderMeme();
+}
+
+function setFontSize(diff) {
+    gMeme.lines[gMeme.selectedLineIdx].fontSize += diff
+    renderMeme()
+}
+
+function setAlignment(alignment){
+    gMeme.lines[gMeme.selectedLineIdx].align=alignment
     renderMeme()
 }
 
@@ -101,23 +129,22 @@ function setImg(imgId) {
     init();
 }
 
-function setFontSize(fontSize) {
-    gMeme.lines[gMeme.selectedLineIdx].fontSize = fontSize;
-}
 
-function setAlign(align) {
-    gMeme.lines[gMeme.selectedLineIdx].align = align
-}
+
+
 
 function setFontFamily(fontFamily) {
     gMeme.lines[gMeme.selectedLineIdx].fontFamily = fontFamily
+    renderMeme();
 }
 
 function setStrokeColor(strokeColor) {
     gMeme.lines[gMeme.selectedLineIdx].strokeColor = strokeColor
+    renderMeme();
 }
 
 function setFillColor(fillColor) {
     gMeme.lines[gMeme.selectedLineIdx].fillColor = fillColor;
+    renderMeme();
 }
 

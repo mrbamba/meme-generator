@@ -41,11 +41,41 @@
                 <!-- EDITOR TOOLS  -->
                 <!-- <div class="editor-tools-grid"> -->
                     <div class="editor-tools-grid">
-                        <input type="text" placeholder="Enter Text" class="text-line" onkeydown="onTextChange()" onpaste="onTextChange()" oninput="onTextChange()">
 
-                        <div class="switch-line" onclick="onSwitchLine()"></div>
+                        <div class="switch-line editor-buttons" onclick="onSwitchLine()"></div>
 
-                        <div class="add-line" onclick="onAddLine()"></div>
+                        <div class="add-line editor-buttons" onclick="onAddLine()"></div>
+
+                        <div class="delete-line editor-buttons" onclick="onDeleteLine()"></div>
+
+  
+                        <input type="text" placeholder="Enter Text" class="text-line editor-buttons" onkeydown="onTextChange()" onpaste="onTextChange()" oninput="onTextChange()">
+
+ 
+                        <div class="move-up editor-buttons" onclick="onMove('up')"></div>
+
+                        <div class="move-down editor-buttons" onclick="onMove('down')"></div>
+
+                        <div class="move-left editor-buttons" onclick="onMove('left')"></div>
+
+                        <div class="move-right editor-buttons" onclick="onMove('right')"></div>
+
+
+                        <div class="increase-font-size editor-buttons" onclick="onSetFont(2)"></div>
+
+                        <div class="decrease-font-size editor-buttons" onclick="onSetFont(-2)"></div>
+
+                        <div class="right-align editor-buttons" onclick="onSetAlignment('left')"></div>
+
+                        <div class="center-align editor-buttons" onclick="onSetAlignment('center')"></div>
+
+                        <div class="left-align editor-buttons" onclick="onSetAlignment('right')"></div>
+
+                        <select name="font-selector" class="font-selector " id="">
+                            <option value="impact">impact</option>
+                        </select>
+
+
 
 
 

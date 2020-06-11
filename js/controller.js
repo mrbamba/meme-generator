@@ -45,6 +45,20 @@ function onAddLine() {
     document.querySelector('.text-line').value = '';
 }
 
+function onDeleteLine(){
+    DeleteLine();
+}
+
+function onSetFont(diff){
+    setFontSize(diff);
+}
+
+function onSetAlignment(alignment){
+    setAlignment(alignment);
+}
+
+
+
 function onStrokeColorChange() {
     let strokeColor = document.querySelector('.stroke-color-picker').value;
     console.log(strokeColor);
@@ -117,7 +131,7 @@ function drawText(lineIdx) {
     let line = meme.lines[lineIdx];
 
     gCtx.lineWidth = '2';
-    gCtx.font = '' + line.fontSize + ' ' + line.fontFamily;
+    gCtx.font = '' + line.fontSize + 'px ' + line.fontFamily;
     gCtx.fillStyle = line.fillColor;
     gCtx.strokeStyle = line.strokeColor;
     gCtx.textAlign = line.align
