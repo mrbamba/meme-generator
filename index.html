@@ -32,15 +32,16 @@
     <main class="main flex ">
         <!-- EDITOR PAGE -->
         <div class="editor-page container">
-            <!-- CANVAS CONTAINER -->
+            <!-- CANVAS -->
             <div class="main-editor-page-grid-container">
                 <div class="canvas-container flex justify-content">
                     <canvas onclick="draw(event)" id="drawing"
                         style=" width:500px; height:500px;border: 1px solid black;"></canvas>
                 </div>
+                <!-- EDITOR TOOLS  -->
                 <div class="editor-tools-grid">
                     <div class="editor-tools">
-                        <input type="text" placeholder="Enter Text" class="text-line">
+                        <input type="text" placeholder="Enter Text" class="text-line" onkeydown="onTextChange()" onpaste="onTextChange()" oninput="onTextChange()">
 
 
 
@@ -48,7 +49,7 @@
                         <input type="color" id="favcolor" name="favcolor" value="#000" class="stroke-color-picker"
                             onchange="onStrokeColorChange()">
                         <input type="color" id="favcolor" name="favcolor" value="#000" class="fill-color-picker"
-                            onchange="onFillColorChange()">
+                            onchange="onFillColorChange();">
                     </div>
                 </div>
             </div>

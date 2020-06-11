@@ -28,7 +28,7 @@ var gMeme={
 
     lines:[
         {
-            txt:'I never eat Falafel',
+            txt:'',
             size:20,
             align:'left',
             color:'000',
@@ -45,6 +45,10 @@ function getGMeme(){
 function getImgById(id){
     var img=gImgs.find(img => img.id === id);
     return img;
+}
+function setLine(text){
+    gMeme.lines[0].txt=text;
+    renderMeme();
 }
 
 
