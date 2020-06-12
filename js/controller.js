@@ -15,17 +15,33 @@ function init() {
     gCtx.lineWidth = '2';
     gCtx.save();
 
-
-    resizeCanvas();
-    renderMeme()
     renderGallery()
 
 }
 
-function resizeCanvas() {
-    var elCanvasContainer = document.querySelector('.canvas-container');
-    gElCanvas.width = elCanvasContainer.offsetWidth;
-    gElCanvas.height = elCanvasContainer.offsetHeight;
+function resizeCanvas(imgId) {
+
+
+
+    let elCanvasContainer = document.querySelector('.canvas-container');
+    let maxWidth = elCanvasContainer.offsetWidth;
+
+    let maxHeight = elCanvasContainer.offsetHeight;
+
+
+    let elImg = document.getElementById(`${imgId}`);
+    let width = elImg.naturalWidth;
+    let height = elImg.naturalHeight;
+
+    let ratio = maxWidth / width;
+    if (height * ratio > maxHeight) {
+        ratio = maxHeight / height;
+    }
+    elImg.width = (width * ratio);
+    elImg.height = (height * ratio);
+
+    gElCanvas.width = elImg.width;
+    gElCanvas.height = elImg.height;
 }
 
 // SETTING CHANGES
@@ -91,11 +107,13 @@ function onFillColorChange() {
 
 function onOpenEditor(imgId) {
     let gallery = document.querySelector('.gallery-page');
-    gallery.classList.toggle('hidden')
+    gallery.classList.toggle('hidden');
     let editor = document.querySelector('.editor-page');
-    editor.classList.toggle('hidden')
+    editor.classList.toggle('hidden');
     setImg(imgId);
-    init();
+    resizeCanvas(imgId);
+    renderMeme()
+
 }
 
 
@@ -109,15 +127,15 @@ function onOpenGallery() {
 function renderMeme() {
     clearCanvas()
     let meme = getGMeme();
+    resizeCanvas(meme.selectedImgId)
     let img = getImgById(meme.selectedImgId);
-    // drawImg(img.url)
 
-    let elImg = new Image();
-    elImg.src = img.url;
-    elImg.onload = function () {
-        gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
-        drawTexts();
-    }
+
+    let elImg = document.getElementById(`${meme.selectedImgId}`);
+    console.log(elImg)
+
+    gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
+    drawTexts();
     document.querySelector('.text-line').value = meme.lines[meme.selectedLineIdx].txt;
 }
 
@@ -125,13 +143,7 @@ function clearCanvas() {
     gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height)
 }
 
-function drawImg(src) {
-    let elImg = new Image();
-    elImg.src = src;
-    elImg.onload = function () {
-        gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
-    }
-}
+
 function drawTexts() {
     let meme = getGMeme();
     for (let i = 0; i < meme.lines.length; i++)drawText(i)
@@ -146,21 +158,22 @@ function drawText(lineIdx) {
     gCtx.fillStyle = line.fillColor;
     gCtx.strokeStyle = line.strokeColor;
     gCtx.textAlign = line.align
-    
+
     gCtx.fillText(line.txt, line.x, line.y)
     gCtx.strokeText(line.txt, line.x, line.y)
-    if (lineIdx === meme.selectedLineIdx) {
-        let y;
-        var text = gCtx.measureText(line.txt);
-        console.log(text)
 
-        if(meme.lines[meme.selectedLineIdx].align==='right'){
-            y+=text.width/2
-            console.log(y)
-        }
 
-        gCtx.fillRect(line.x, y, text.width, 10);
-    }
+    // if (lineIdx === meme.selectedLineIdx) {
+    //     let y;
+    //     var text = gCtx.measureText(line.txt);
+
+    //     if (meme.lines[meme.selectedLineIdx].align === 'right') {
+    //         y += text.width / 2
+    //         console.log(y)
+    //     }
+
+    //     gCtx.fillRect(line.x, y, text.width, 10);
+    // }
 }
 
 // GALLERY
@@ -168,7 +181,7 @@ function drawText(lineIdx) {
 function renderGallery() {
     let strHtmls = []
     gImgs.map(img => {
-        let elImg = `<img src="${img.url}" class="gallery-img" onclick="onOpenEditor(${img.id})">`
+        let elImg = `<img src="${img.url}" class="gallery-img" id="${img.id}" onclick="onOpenEditor(${img.id})" >\n`
         strHtmls.push(elImg)
     })
     document.querySelector('.gallery-grid-container').innerHTML = strHtmls.join('');

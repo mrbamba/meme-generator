@@ -49,13 +49,10 @@ input {
     outline: none;
 }
 
-/* img {
-    width: 100%;
-} */
-
 .container {
     max-width: 1080px;
     margin: 0 auto;
+    flex-grow: 1;
 }
 
 /* HEADER */
@@ -70,7 +67,6 @@ input {
     font-weight: 400;
     line-height: 0.8;
     text-transform: uppercase;
-    /* margin: 10px 0; */
     cursor: pointer;
 }
 
@@ -109,11 +105,12 @@ input {
 
 .main {
     background-color: rgb(249, 238, 219);
+    flex-grow: 1;
 }
 
-.main-editor-page-grid-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+.main-editor-page {
+    justify-content: space-around;
+    flex-direction: row;
     padding: 2em;
 }
 
@@ -125,17 +122,19 @@ input {
     grid-template-rows: 50px 50px 50px 25px 50px 50px 50px 50px;
     gap: 1em;
     justify-content: center;
-    /* margin: 2em; */
+
 }
 
 /* CANVAS */
 
 .canvas-container {
-    /* background-color: #fff; */
-    display: grid;
-    text-align: left;
-    grid-column: 1/2;
+
+    text-align: center;
+
     padding: 0;
+    justify-content: flex-start;
+    width: 550px;
+    height: 550px;
 }
 
 /* EDITOR TOOLS */
@@ -172,7 +171,6 @@ input {
 .text-line {
     grid-column-start: 1;
     grid-column-end: 6;
-    /* grid-column:1/6; */
     grid-row: 2;
     border-radius: 15px;
     border: none;
@@ -251,7 +249,6 @@ input {
     width: 100%;
     opacity: 0%;
     cursor: pointer;
-    /* z-index: 2; */
 }
 
 .stroke-color-picker-img {
@@ -365,15 +362,66 @@ input {
     visibility: hidden;
 }
 
-@media only screen and (max-width: 900px) {
-    .main-editor-page-grid-container {
-        grid-template-columns: 1fr;
-        grid-template-rows: 60% 40%;
+@media only screen and (max-width: 1050px) {
+    .main-editor-page {
+        flex-direction: column;
     }
     .editor-tools-grid {
         grid-column: 1;
         grid-row: 2;
-        /* padding: 30px; */
+        padding: 30px;
         justify-content: center;
+    }
+    .gallery-grid-container {
+        grid-template-columns: repeat(4, 200px);
+        margin: 0 auto;
+        justify-content: center;
+    }
+    .canvas-container {
+        margin: 0 auto;
+    }
+}
+
+@media only screen and (max-width: 850px) {
+    .gallery-grid-container {
+        grid-template-columns: repeat(3, 200px);
+    }
+}
+
+@media only screen and (max-width: 630px) {
+    .gallery-grid-container {
+        grid-template-columns: repeat(2, 200px);
+    }
+    .canvas-container {
+        width: 350px;
+        max-height: 350px;
+        padding: 0px;
+    }
+    .main-editor-page {
+        padding: 0;
+        margin: 0;
+    }
+    .editor-buttons {
+        padding: 0px;
+        align-content: center;
+    }
+}
+
+@media only screen and (max-width: 430px) {
+    .gallery-grid-container {
+        grid-template-columns: 1fr;
+        margin: 0 auto;
+        gap: .5em;
+        padding: .5em;
+        justify-items: center;
+    }
+    .canvas-container {
+        margin: 0 ;
+        padding: .25rem;
+        align-content: center;
+    }
+    .gallery-img {
+        height: 300px;
+        width: 300px;
     }
 }

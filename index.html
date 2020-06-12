@@ -10,7 +10,7 @@
     <title>MEMED</title>
 </head>
 
-<body onload="init()" class="flex-col space-between">
+<body onload="init()" class="flex-col space-between flex">
     <!-- HEADER -->
     <header class="main-header ">
         <div class="container">
@@ -31,64 +31,62 @@
     <!-- MAIN -->
     <main class="main flex ">
         <!-- EDITOR PAGE -->
-        <div class="editor-page hidden container" >
+        <div class="editor-page hidden container">
             <!-- CANVAS -->
-            <div class="main-editor-page-grid-container">
-                <div class="canvas-container flex ">
-                    <canvas  id="drawing"
-                        style=" width:502px; height:502px;border: 1px solid black;"></canvas>
+            <div class="main-editor-page flex">
+                <div class="canvas-container  ">
+                    <canvas id="drawing" style="border: 1px solid black;"></canvas>
                 </div>
                 <!-- EDITOR TOOLS  -->
-                <!-- <div class="editor-tools-grid"> -->
-                    <div class="editor-tools-grid">
+                <div class="editor-tools-grid ">
 
-                        <div class="switch-line editor-buttons" onclick="onSwitchLine()"></div>
+                    <div class="switch-line editor-buttons" onclick="onSwitchLine()"></div>
 
-                        <div class="add-line editor-buttons" onclick="onAddLine()"></div>
+                    <div class="add-line editor-buttons" onclick="onAddLine()"></div>
 
-                        <div class="delete-line editor-buttons" onclick="onDeleteLine()"></div>
-
-  
-                        <input type="text" placeholder="Enter Text" class="text-line editor-buttons" onkeydown="onTextChange()" onpaste="onTextChange()" oninput="onTextChange()">
-
- 
-                        <div class="move-up editor-buttons" onclick="onMoveY(-5)"></div>
-
-                        <div class="move-down editor-buttons" onclick="onMoveY(5)"></div>
-
-                        <div class="move-left editor-buttons" onclick="onMoveX(-5)"></div>
-
-                        <div class="move-right editor-buttons" onclick="onMoveX(5)"></div>
+                    <div class="delete-line editor-buttons" onclick="onDeleteLine()"></div>
 
 
-                        <div class="increase-font-size editor-buttons" onclick="onSetFontSize(2)"></div>
-
-                        <div class="decrease-font-size editor-buttons" onclick="onSetFontSize(-2)"></div>
-
-                        <div class="right-align editor-buttons" onclick="onSetAlignment('left')"></div>
-
-                        <div class="center-align editor-buttons" onclick="onSetAlignment('center')"></div>
-
-                        <div class="left-align editor-buttons" onclick="onSetAlignment('right')"></div>
+                    <input type="text" placeholder="Enter Text" class="text-line editor-buttons"
+                        onkeydown="onTextChange()" onpaste="onTextChange()" oninput="onTextChange()">
 
 
-                        <select name="font-selector" class="font-selector " id="" onchange="onSetFontFamily()">
-                            <option value="impact">Impact</option>
-                            <option value="elite">Elite</option>
-                            <option value="arial">Arial</option>
-                            <option value="roboto">Roboto</option>
-                            <option value="metal-mania">Metal Mania</option>
-                        </select>
+                    <div class="move-up editor-buttons" onclick="onMoveY(-5)"></div>
 
-                        <input type="color" id="favcolor" name="favcolor" value="#000" class="stroke-color-picker"
-                            onchange="onStrokeColorChange()">
-                            <div class="stroke-color-picker-img"></div>
+                    <div class="move-down editor-buttons" onclick="onMoveY(5)"></div>
 
-                        <input type="color" id="favcolor" name="favcolor" value="#000" class="fill-color-picker"
-                            onchange="onFillColorChange();">
-                            <div class="fill-color-picker-img"></div>
-                    </div>
-                <!-- </div> -->
+                    <div class="move-left editor-buttons" onclick="onMoveX(-5)"></div>
+
+                    <div class="move-right editor-buttons" onclick="onMoveX(5)"></div>
+
+
+                    <div class="increase-font-size editor-buttons" onclick="onSetFontSize(2)"></div>
+
+                    <div class="decrease-font-size editor-buttons" onclick="onSetFontSize(-2)"></div>
+
+                    <div class="right-align editor-buttons" onclick="onSetAlignment('left')"></div>
+
+                    <div class="center-align editor-buttons" onclick="onSetAlignment('center')"></div>
+
+                    <div class="left-align editor-buttons" onclick="onSetAlignment('right')"></div>
+
+
+                    <select name="font-selector" class="font-selector " id="" onchange="onSetFontFamily()">
+                        <option value="impact">Impact</option>
+                        <option value="elite">Elite</option>
+                        <option value="arial">Arial</option>
+                        <option value="roboto">Roboto</option>
+                        <option value="metal-mania">Metal Mania</option>
+                    </select>
+
+                    <input type="color" id="favcolor" name="favcolor" value="#000" class="stroke-color-picker"
+                        onchange="onStrokeColorChange()">
+                    <div class="stroke-color-picker-img"></div>
+
+                    <input type="color" id="favcolor" name="favcolor" value="#000" class="fill-color-picker"
+                        onchange="onFillColorChange();">
+                    <div class="fill-color-picker-img"></div>
+                </div>
             </div>
         </div>
         <!-- GALLERY PAGE -->
