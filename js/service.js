@@ -21,8 +21,16 @@ var gImgs = [
     { id: 16, url: 'meme-imgs/16.jpg', keywords: [''] },
     { id: 17, url: 'meme-imgs/17.jpg', keywords: [''] },
     { id: 18, url: 'meme-imgs/18.jpg', keywords: [''] },
-    { id: 19, url: 'meme-imgs/One-Does-Not-Simply.jpg', keywords: [''] }
+    { id: 19, url: 'meme-imgs/19.jpg', keywords: [''] },
+    { id: 20, url: 'meme-imgs/20.jpg', keywords: [''] },
+    { id: 21, url: 'meme-imgs/21.jpg', keywords: [''] },
+    { id: 22, url: 'meme-imgs/22.jpg', keywords: [''] },
+    { id: 23, url: 'meme-imgs/23.jpg', keywords: [''] },
+    { id: 24, url: 'meme-imgs/24.jpg', keywords: [''] },
+    { id: 25, url: 'meme-imgs/25.jpg', keywords: [''] },
 ];
+
+
 var gMeme = {
     selectedImgId: 1,
     selectedLineIdx: 0,
@@ -42,6 +50,14 @@ var gMeme = {
 }
 
 // GETTERS
+
+function setInitialX() {
+    let elImg = document.getElementById(`${gMeme.selectedImgId}`);
+    let center = elImg.width / 2;
+    gMeme.lines[0].x = center;
+    renderMeme()
+
+}
 function getGMeme() {
     return gMeme;
 }
@@ -62,6 +78,12 @@ function setLine() {
 }
 
 function addLine() {
+    let elImg = document.getElementById(`${gMeme.selectedImgId}`);
+    let width = elImg.width;
+    let height = elImg.height;
+
+
+
     if (gMeme.lines.length === 1) {
         gMeme.lines.push({
             txt: '',
@@ -70,8 +92,8 @@ function addLine() {
             fontFamily: 'impact',
             strokeColor: 'black',
             fillColor: '#fff',
-            x: 250,
-            y: 450
+            x: (width / 2),
+            y: (height - 50)
         })
     } else {
         gMeme.lines.push({
@@ -81,8 +103,8 @@ function addLine() {
             fontFamily: 'impact',
             strokeColor: '#000',
             fillColor: '#fff',
-            x: 250,
-            y: 250
+            x: (width / 2),
+            y: (height / 2)
         })
     }
 
@@ -113,8 +135,8 @@ function setFontSize(diff) {
     renderMeme()
 }
 
-function setAlignment(alignment){
-    gMeme.lines[gMeme.selectedLineIdx].align=alignment
+function setAlignment(alignment) {
+    gMeme.lines[gMeme.selectedLineIdx].align = alignment
     renderMeme()
 }
 
@@ -129,12 +151,12 @@ function setImg(imgId) {
     init();
 }
 
-function moveX(diff){
+function moveX(diff) {
     gMeme.lines[gMeme.selectedLineIdx].x += diff;
     renderMeme();
 }
 
-function moveY(diff){
+function moveY(diff) {
     gMeme.lines[gMeme.selectedLineIdx].y += diff;
     renderMeme();
 }

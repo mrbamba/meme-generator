@@ -112,7 +112,7 @@ function onOpenEditor(imgId) {
     editor.classList.toggle('hidden');
     setImg(imgId);
     resizeCanvas(imgId);
-    renderMeme()
+    setInitialX()
 
 }
 
@@ -132,7 +132,6 @@ function renderMeme() {
 
 
     let elImg = document.getElementById(`${meme.selectedImgId}`);
-    console.log(elImg)
 
     gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
     drawTexts();
