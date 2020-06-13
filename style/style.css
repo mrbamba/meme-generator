@@ -111,7 +111,7 @@ input {
 .main-editor-page {
     justify-content: space-around;
     flex-direction: row;
-    padding: 2em;
+    padding-top: 2em;
 }
 
 .editor-tools-grid {
@@ -293,8 +293,11 @@ input {
     padding: 10px;
     display: inline-block;
     text-align: center;
-    vertical-align:middle;
 
+}
+
+.fa-download:before {
+    vertical-align:baseline;
 }
 
 .facebook{
@@ -397,7 +400,7 @@ input {
     .editor-tools-grid {
         grid-column: 1;
         grid-row: 2;
-        padding: 30px;
+        padding-bottom: 30px;
         justify-content: center;
     }
     .gallery-grid-container {
@@ -444,13 +447,15 @@ input {
         justify-items: center;
     }
     .canvas-container {
-        margin: 0 ;
-        padding: .25rem;
+        /* margin: 0 ; */
+        padding-top: .25rem;
         align-content: center;
     }
     .gallery-img {
         /* height: 150px; */
         width: 150px;
+        height: 150px;
+
         object-fit: cover;
     }
 }
