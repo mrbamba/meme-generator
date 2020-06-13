@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style/style.css">
     <script src="https://kit.fontawesome.com/c63920a58d.js" crossorigin="anonymous"></script>
+    <link rel="icon" href="favicon-32x32.png">
 
     <title>MEMED</title>
 </head>
@@ -23,7 +24,7 @@
 
                 <ul class="main-nav clean-list flex justify-content">
                     <li><a href="#" onclick="onOpenGallery()">Gallery</a></li>
-                    <li><a href="#">About</a></li>
+                    <li><a href="#" onclick="onOpenAbout()">About</a></li>
                 </ul>
             </div>
         </div>
@@ -87,9 +88,10 @@
                         onchange="onFillColorChange();">
                     <div class="fill-color-picker-img"></div>
 
-                    <a href="#" class="download editor-buttons" onclick="onDownloadCanvas(this)"><i class="fas fa-download"></i></a>
-                    
-                    <a href='#' class="facebook editor-buttons hidden" ><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="download editor-buttons" onclick="onDownloadCanvas(this)"><i
+                            class="fas fa-download"></i></a>
+
+                    <a href='#' class="facebook editor-buttons hidden"><i class="fab fa-facebook-f"></i></a>
 
                 </div>
 
@@ -100,6 +102,11 @@
             <div class="gallery-grid-container">
 
             </div>
+        </div>
+        <div class="about hidden container">
+            <h1>About MEMED</h1>
+            <p>Created as a Coding Academt assignment by Dan H. Thank you for trying out this basic Meme Generator, hope
+                you enjoyed it.</p>
         </div>
 
     </main>

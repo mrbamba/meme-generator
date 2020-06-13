@@ -107,9 +107,9 @@ function onFillColorChange() {
 
 function onOpenEditor(imgId) {
     let gallery = document.querySelector('.gallery-page');
-    gallery.classList.toggle('hidden');
+    gallery.classList.add('hidden');
     let editor = document.querySelector('.editor-page');
-    editor.classList.toggle('hidden');
+    editor.classList.remove('hidden');
     setImg(imgId);
     resizeCanvas(imgId);
     setInitialX()
@@ -119,9 +119,11 @@ function onOpenEditor(imgId) {
 
 function onOpenGallery() {
     let gallery = document.querySelector('.gallery-page');
-    gallery.classList.toggle('hidden')
+    gallery.classList.remove('hidden')
     let editor = document.querySelector('.editor-page');
-    editor.classList.toggle('hidden')
+    editor.classList.add('hidden')
+    let about=document.querySelector('.about');
+    about.classList.add('hidden')
 }
 
 function renderMeme() {
@@ -160,19 +162,6 @@ function drawText(lineIdx) {
 
     gCtx.fillText(line.txt, line.x, line.y)
     gCtx.strokeText(line.txt, line.x, line.y)
-
-
-    // if (lineIdx === meme.selectedLineIdx) {
-    //     let y;
-    //     var text = gCtx.measureText(line.txt);
-
-    //     if (meme.lines[meme.selectedLineIdx].align === 'right') {
-    //         y += text.width / 2
-    //         console.log(y)
-    //     }
-
-    //     gCtx.fillRect(line.x, y, text.width, 10);
-    // }
 }
 
 // GALLERY
@@ -186,6 +175,18 @@ function renderGallery() {
     document.querySelector('.gallery-grid-container').innerHTML = strHtmls.join('');
 }
 
+// ABOUT
+
+function onOpenAbout(){
+    let gallery = document.querySelector('.gallery-page');
+    gallery.classList.add('hidden')
+    let editor = document.querySelector('.editor-page');
+    editor.classList.add('hidden')
+    let about=document.querySelector('.about');
+    about.classList.remove('hidden')
+
+}
+
 
 
 // DOWNLOAD
@@ -197,7 +198,7 @@ function onDownloadCanvas(elLink) {
     
 }
 
-// SHARING
+// SHARING - NOT ACTIVE YET
 
 
 // on submit call to this function

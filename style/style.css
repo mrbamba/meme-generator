@@ -290,9 +290,11 @@ input {
     grid-column: 5/6;
     grid-row: 8;
     font-size: 2rem;
-    padding: 8px;
+    padding: 10px;
     display: inline-block;
     text-align: center;
+    vertical-align:middle;
+
 }
 
 .facebook{
@@ -332,6 +334,13 @@ input {
     width: 200px;
     object-fit: cover;
     cursor: pointer;
+}
+
+/* ABOUT */
+
+.about{
+    text-align: center;
+    padding: 20px;
 }
 
 /* HELPERS */
