@@ -29,8 +29,8 @@
 body {
     margin: 0 auto;
     font-size: 1;
-    height: 100vh;
-}
+    min-height: 100vh;
+    position: relative;}
 
 h1, h2, h3, h4, h5, h6 {
     margin-top: 0;
@@ -293,11 +293,12 @@ input {
     padding: 10px;
     display: inline-block;
     text-align: center;
+    vertical-align:sub;
 
 }
 
 .fa-download:before {
-    vertical-align:baseline;
+    vertical-align:sub;
 }
 
 .facebook{
