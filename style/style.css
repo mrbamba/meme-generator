@@ -293,12 +293,10 @@ input {
     padding: 10px;
     display: inline-block;
     text-align: center;
-    vertical-align:sub;
 
 }
 
 .fa-download:before {
-    vertical-align:sub;
 }
 
 .facebook{
@@ -430,13 +428,10 @@ input {
         padding: 0px;
     }
     .main-editor-page {
-        padding: 0;
-        margin: 0;
+        /* padding: 0;
+        margin: 0; */
     }
-    .editor-buttons {
-        padding: 0px;
-        align-content: center;
-    }
+
 }
 
 @media only screen and (max-width: 430px) {
@@ -448,12 +443,10 @@ input {
         justify-items: center;
     }
     .canvas-container {
-        /* margin: 0 ; */
         padding-top: .25rem;
         align-content: center;
     }
     .gallery-img {
-        /* height: 150px; */
         width: 150px;
         height: 150px;
 

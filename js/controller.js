@@ -100,7 +100,6 @@ function onFillColorChange() {
 
 
 
-// EVENT HANDLERS
 
 
 // RENDERING
@@ -122,12 +121,12 @@ function onOpenGallery() {
     gallery.classList.remove('hidden')
     let editor = document.querySelector('.editor-page');
     editor.classList.add('hidden')
-    let about=document.querySelector('.about');
+    let about = document.querySelector('.about');
     about.classList.add('hidden')
 }
 
 function renderMeme() {
-    clearCanvas()
+    // clearCanvas()
     let meme = getGMeme();
     resizeCanvas(meme.selectedImgId)
     let img = getImgById(meme.selectedImgId);
@@ -162,7 +161,30 @@ function drawText(lineIdx) {
 
     gCtx.fillText(line.txt, line.x, line.y)
     gCtx.strokeText(line.txt, line.x, line.y)
+
+    // MARK CURRENTLY EDITED LINE
+    if (meme.selectedLineIdx === lineIdx) {
+        let textWidth = gCtx.measureText(line.txt).width;
+        console.log(textWidth)
+        let startX = line.x
+        let startY = line.y + 3
+        if (line.align === 'center') {
+            startX -= textWidth / 2
+        } else if (line.align === 'right') {
+            startX -= textWidth
+        }
+        markSelectedLine(startX, startY, textWidth);
+    }
 }
+
+function markSelectedLine(x, y, length, height = 2) {
+    gCtx.beginPath();
+    gCtx.rect(x, y, length, height);
+    gCtx.strokeStyle = 'gold';
+    gCtx.stroke();
+}
+
+
 
 // GALLERY
 
@@ -177,12 +199,12 @@ function renderGallery() {
 
 // ABOUT
 
-function onOpenAbout(){
+function onOpenAbout() {
     let gallery = document.querySelector('.gallery-page');
     gallery.classList.add('hidden')
     let editor = document.querySelector('.editor-page');
     editor.classList.add('hidden')
-    let about=document.querySelector('.about');
+    let about = document.querySelector('.about');
     about.classList.remove('hidden')
 
 }
@@ -195,7 +217,6 @@ function onDownloadCanvas(elLink) {
     elLink.href = imgData;
     elLink.download = 'my-meme'
     console.log('runs');
-    
 }
 
 // SHARING - NOT ACTIVE YET
@@ -224,13 +245,13 @@ function doUploadImg(elForm, onSuccess) {
         method: 'POST',
         body: formData
     })
-    .then(function (res) {
-        return res.text()
-    })
-    .then(onSuccess)
-    .catch(function (err) {
-        console.error(err)
-    })
+        .then(function (res) {
+            return res.text()
+        })
+        .then(onSuccess)
+        .catch(function (err) {
+            console.error(err)
+        })
 }
 
 // The next 2 functions handle IMAGE UPLOADING to img tag from file system: 
@@ -240,7 +261,7 @@ function onImgInput(ev) {
 function loadImageFromInput(ev, onImageReady) {
     document.querySelector('.share-container').innerHTML = ''
     var reader = new FileReader();
-    
+
     reader.onload = function (event) {
         var img = new Image();
         img.onload = onImageReady.bind(null, img)
