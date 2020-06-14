@@ -130,6 +130,13 @@ function DeleteLine() {
     renderMeme();
 }
 
+function setLineLocation(x,y){
+    gMeme.lines[gMeme.selectedLineIdx].x=x;
+    gMeme.lines[gMeme.selectedLineIdx].y=y;
+    renderMeme();
+
+}
+
 function setFontSize(diff) {
     gMeme.lines[gMeme.selectedLineIdx].fontSize += diff
     renderMeme()

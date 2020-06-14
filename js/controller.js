@@ -4,8 +4,9 @@
 var gCtx;
 var gElCanvas;
 var gCurrText;
-var gIsDrawing;
+var gIsDragging;
 const CANVAS = document.querySelector('.canvas-container');
+var gIsDownloading=false;
 
 function init() {
     gElCanvas = document.getElementById('drawing');
@@ -14,6 +15,8 @@ function init() {
     gCtx.strokeStyle = 'white'
     gCtx.lineWidth = '2';
     gCtx.save();
+    gIsDragging=false;
+
 
     renderGallery()
 
@@ -98,7 +101,31 @@ function onFillColorChange() {
     setFillColor(fillColor);
 }
 
+//CANVAS DRAWING
+//listeners
+CANVAS.addEventListener('mousedown', ev => {
+    gIsDragging=true
+    // setLineLocation(ev.offsetX,ev.offsetY);
+    // renderMeme()
 
+})
+
+CANVAS.addEventListener('mousemove', ev => {
+
+    if (gIsDragging) 
+    // draw(ev)
+    setLineLocation(ev.offsetX,ev.offsetY);
+    renderMeme()
+})
+
+window.addEventListener('mouseup', ev => {
+
+    if (gIsDragging) {
+        renderMeme()
+
+        gIsDragging = false;
+    }
+})
 
 
 
@@ -137,6 +164,8 @@ function renderMeme() {
     gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
     drawTexts();
     document.querySelector('.text-line').value = meme.lines[meme.selectedLineIdx].txt;
+    gIsDownloading=false
+
 }
 
 function clearCanvas() {
@@ -163,9 +192,8 @@ function drawText(lineIdx) {
     gCtx.strokeText(line.txt, line.x, line.y)
 
     // MARK CURRENTLY EDITED LINE
-    if (meme.selectedLineIdx === lineIdx) {
+    if (meme.selectedLineIdx === lineIdx && !gIsDownloading) {
         let textWidth = gCtx.measureText(line.txt).width;
-        console.log(textWidth)
         let startX = line.x
         let startY = line.y + 3
         if (line.align === 'center') {
@@ -175,6 +203,7 @@ function drawText(lineIdx) {
         }
         markSelectedLine(startX, startY, textWidth);
     }
+    
 }
 
 function markSelectedLine(x, y, length, height = 2) {
@@ -213,6 +242,8 @@ function onOpenAbout() {
 
 // DOWNLOAD
 function onDownloadCanvas(elLink) {
+    gIsDownloading=true;
+    renderMeme()
     const imgData = gElCanvas.toDataURL();
     elLink.href = imgData;
     elLink.download = 'my-meme'
